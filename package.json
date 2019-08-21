@@ -1,8 +1,8 @@
 {
   "name": "apollo-persisted-hash",
-  "description": "Apollo cli for apollo-persisted-link",
+  "description": "Apollo cli for apollo-link-persisted-queries",
   "version": "2.18.1",
-  "author": "Thanaphol <opensource@apollographql.com>",
+  "author": "Sun Thanaphol",
   "license": "MIT",
   "repository": {
     "type": "git",
