@@ -7,6 +7,8 @@ The main purpose of this repo is for supporting [apollo-link-persisted-queries](
 1). Use custom `gql` from `graphql-tag`
 
 ```ts
+import { sortDefinitions } from 'apollo-persisted-hash/lib/utils/document'
+
 export const gql = (literals: TemplateStringsArray, ...placeholders: any[]) => {
 	const document = graphqlTag(literals, ...placeholders)
 	const sortedDefinitionsDocument = sortDefinitions(document)

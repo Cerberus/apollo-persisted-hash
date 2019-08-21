@@ -5,7 +5,7 @@ import sha256 from 'hash.js/lib/hash/sha/256'
 import { addTypenameToDocument } from 'apollo-utilities'
 
 import { print } from 'graphql/language/printer'
-import { DocumentNode } from 'graphql'
+import { sortDefinitions } from './document'
 
 export interface ManifestEntry {
 	signature: string
@@ -14,16 +14,6 @@ export interface ManifestEntry {
 		engineSignature: string
 	}
 }
-
-export const sortDefinitions = (document: DocumentNode) => ({
-	...document,
-	// @ts-ignore there is a sort property inside
-	definitions: document.definitions.sort((a, b) => {
-		if (a.name.value < b.name.value) return -1
-		if (a.name.value > b.name.value) return 1
-		return 0
-	}),
-})
 
 export function getOperationManifestFromProject(
 	project: GraphQLClientProject,
