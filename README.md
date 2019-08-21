@@ -6,9 +6,10 @@ Disclaimer: I have no plan to maintain this. but may open a pull-request to the 
 
 ## How to make persisted hash with apollo-link-persisted-queries
 
-1). Use custom `gql` from `graphql-tag`
+1). Implement a new custom `gql` instead of `graphql-tag`
 
 ```ts
+import graphqlTag from 'graphql-tag'
 import { sortDefinitions } from 'apollo-persisted-hash/lib/utils/document'
 
 export const gql = (literals: TemplateStringsArray, ...placeholders: any[]) => {
