@@ -1,0 +1,16 @@
+{
+	"extends": "./tsconfig.base",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./lib",
+		"esModuleInterop": true,
+		"noImplicitAny": false,
+		"baseUrl": ".",
+		"paths": {
+			"*": ["./@types/*", "./types/*"]
+		}
+	},
+	"include": ["./src/**/*"],
+	"exclude": ["**/__tests__/*", "**/__mocks__/*", "node_modules"],
+	"references": []
+}
