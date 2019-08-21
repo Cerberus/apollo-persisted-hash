@@ -1,3 +1,7 @@
+# Forked from [apollo](https://www.npmjs.com/package/apollo)
+
+The main purpose of this repo is for supporting [apollo-link-persisted-queries](https://github.com/apollographql/apollo-link-persisted-queries). But I have no plan to maintain.
+
 # Apollo CLI
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?maxAge=2592000)](https://raw.githubusercontent.com/apollographql/apollo-tooling/master/LICENSE) [![npm](https://img.shields.io/npm/v/apollo.svg)](https://www.npmjs.com/package/apollo) [![Get on Slack](https://img.shields.io/badge/spectrum-join-orange.svg)](https://spectrum.chat/apollo?tab=posts)
@@ -5,17 +9,19 @@
 Apollo CLI brings together your GraphQL clients and servers with tools for validating your schema, linting your operations for compatibility with your server, and generating static types for improved client-side type safety.
 
 <!-- toc -->
-* [Apollo CLI](#apollo-cli)
-* [Usage](#usage)
-* [Commands](#commands)
-* [Configuration](#configuration)
-* [Code Generation](#code-generation)
-* [Contributing](#contributing)
-<!-- tocstop -->
+
+- [Apollo CLI](#apollo-cli)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Configuration](#configuration)
+- [Code Generation](#code-generation)
+- [Contributing](#contributing)
+  <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
+
 ```sh-session
 $ npm install -g apollo
 $ apollo COMMAND
@@ -27,27 +33,29 @@ USAGE
   $ apollo COMMAND
 ...
 ```
+
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-* [`apollo client:check`](#apollo-clientcheck)
-* [`apollo client:codegen [OUTPUT]`](#apollo-clientcodegen-output)
-* [`apollo client:download-schema OUTPUT`](#apollo-clientdownload-schema-output)
-* [`apollo client:extract OUTPUT`](#apollo-clientextract-output)
-* [`apollo client:push`](#apollo-clientpush)
-* [`apollo help [COMMAND]`](#apollo-help-command)
-* [`apollo plugins`](#apollo-plugins)
-* [`apollo plugins:install PLUGIN...`](#apollo-pluginsinstall-plugin)
-* [`apollo plugins:link PLUGIN`](#apollo-pluginslink-plugin)
-* [`apollo plugins:uninstall PLUGIN...`](#apollo-pluginsuninstall-plugin)
-* [`apollo plugins:update`](#apollo-pluginsupdate)
-* [`apollo service:check`](#apollo-servicecheck)
-* [`apollo service:delete`](#apollo-servicedelete)
-* [`apollo service:download OUTPUT`](#apollo-servicedownload-output)
-* [`apollo service:list`](#apollo-servicelist)
-* [`apollo service:push`](#apollo-servicepush)
+
+- [`apollo client:check`](#apollo-clientcheck)
+- [`apollo client:codegen [OUTPUT]`](#apollo-clientcodegen-output)
+- [`apollo client:download-schema OUTPUT`](#apollo-clientdownload-schema-output)
+- [`apollo client:extract OUTPUT`](#apollo-clientextract-output)
+- [`apollo client:push`](#apollo-clientpush)
+- [`apollo help [COMMAND]`](#apollo-help-command)
+- [`apollo plugins`](#apollo-plugins)
+- [`apollo plugins:install PLUGIN...`](#apollo-pluginsinstall-plugin)
+- [`apollo plugins:link PLUGIN`](#apollo-pluginslink-plugin)
+- [`apollo plugins:uninstall PLUGIN...`](#apollo-pluginsuninstall-plugin)
+- [`apollo plugins:update`](#apollo-pluginsupdate)
+- [`apollo service:check`](#apollo-servicecheck)
+- [`apollo service:delete`](#apollo-servicedelete)
+- [`apollo service:download OUTPUT`](#apollo-servicedownload-output)
+- [`apollo service:list`](#apollo-servicelist)
+- [`apollo service:push`](#apollo-servicepush)
 
 ## `apollo client:check`
 
@@ -101,11 +109,11 @@ ARGUMENTS
   OUTPUT
       Directory to which generated files will be written.
       - For TypeScript/Flow generators, this specifies a directory relative to each source file by default.
-      - For TypeScript/Flow generators with the "outputFlat" flag is set, and for the Swift generator, this specifies a 
+      - For TypeScript/Flow generators with the "outputFlat" flag is set, and for the Swift generator, this specifies a
       file or directory (absolute or relative to the current working directory) to which:
          - a file will be written for each query (if "output" is a directory)
          - all generated types will be written
-      - For all other types, this defines a file (absolute or relative to the current working directory) to which all 
+      - For all other types, this defines a file (absolute or relative to the current working directory) to which all
       generated types are written.
 
 OPTIONS
@@ -370,15 +378,15 @@ DESCRIPTION
 
   Installation of a user-installed plugin will override a core plugin.
 
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command 
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in 
+  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
+  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
   the CLI without the need to patch and update the whole CLI.
 
 ALIASES
   $ apollo plugins:add
 
 EXAMPLES
-  $ apollo plugins:install myplugin 
+  $ apollo plugins:install myplugin
   $ apollo plugins:install https://github.com/someuser/someplugin
   $ apollo plugins:install someuser/someplugin
 ```
@@ -403,7 +411,7 @@ OPTIONS
 DESCRIPTION
   Installation of a linked plugin will override a user-installed or core plugin.
 
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello' 
+  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
   command will override the user-installed or core plugin implementation. This is useful for development work.
 
 EXAMPLE
@@ -605,6 +613,7 @@ ALIASES
 ```
 
 _See code: [src/commands/service/push.ts](https://github.com/apollographql/apollo-tooling/blob/master/packages/apollo/src/commands/service/push.ts)_
+
 <!-- commandsstop -->
 
 # Configuration
@@ -617,11 +626,11 @@ You'll need to set up your Apollo configuration for all the features of the Apol
 
 ```js
 module.exports = {
-  client: {
-    name: "My Client Project",
-    service: "my-service-name"
-  }
-};
+	client: {
+		name: 'My Client Project',
+		service: 'my-service-name',
+	},
+}
 ```
 
 # Code Generation
@@ -674,17 +683,17 @@ Given this query:
 
 ```graphql
 query Characters {
-  characters(episode: NEW_HOPE) {
-    name
+	characters(episode: NEW_HOPE) {
+		name
 
-    ... on Human {
-      homePlanet
-    }
+		... on Human {
+			homePlanet
+		}
 
-    ... on Droid {
-      primaryFunction
-    }
-  }
+		... on Droid {
+			primaryFunction
+		}
+	}
 }
 ```
 
@@ -692,43 +701,43 @@ Apollo Codegen will generate a union type for Character.
 
 ```javascript
 export type CharactersQuery = {
-  characters: Array<
-    | {
-        __typename: "Human",
-        name: string,
-        homePlanet: ?string
-      }
-    | {
-        __typename: "Droid",
-        name: string,
-        primaryFunction: ?string
-      }
-  >
-};
+	characters: Array<
+		| {
+				__typename: 'Human',
+				name: string,
+				homePlanet: ?string,
+		  }
+		| {
+				__typename: 'Droid',
+				name: string,
+				primaryFunction: ?string,
+		  },
+	>,
+}
 ```
 
 This type can then be used as follows to ensure that all possible types are handled:
 
 ```javascript
 function CharacterFigures({ characters }: CharactersQuery) {
-  return characters.map(character => {
-    switch (character.__typename) {
-      case "Human":
-        return (
-          <HumanFigure
-            homePlanet={character.homePlanet}
-            name={character.name}
-          />
-        );
-      case "Droid":
-        return (
-          <DroidFigure
-            primaryFunction={character.primaryFunction}
-            name={character.name}
-          />
-        );
-    }
-  });
+	return characters.map(character => {
+		switch (character.__typename) {
+			case 'Human':
+				return (
+					<HumanFigure
+						homePlanet={character.homePlanet}
+						name={character.name}
+					/>
+				)
+			case 'Droid':
+				return (
+					<DroidFigure
+						primaryFunction={character.primaryFunction}
+						name={character.name}
+					/>
+				)
+		}
+	})
 }
 ```
 
@@ -776,7 +785,6 @@ If you're using VS Code, you can run the included "Attach to CLI Debugger" launc
 ## Regenerating Mocked Network Data
 
 Some integration tests rely on mocked server data (service:check for example). Mock data is generated by making real network requests and recording those requests with [`nock`'s recording feature](https://github.com/nock/nock#recording). Stop mocking network calls and add `nock.recorder.rec()` before network calls are made. For `service:check`, change `apiKey` to a real engine API key. Then run the tests and nock will output code to mock requests to the console. You can (and probably should) pare down the request to be less brittle (by only checking for an operation name, for example). See [`src/commands/service/__tests__/check.test.ts`](./packages/apollo/src/commands/service/__tests__/check.test.ts) for an example of how a mocked network request will look.
-
 
 ## Publishing
 
