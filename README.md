@@ -1,6 +1,8 @@
 # Forked from [apollo](https://www.npmjs.com/package/apollo)
 
-The main purpose of this repo is for supporting [apollo-link-persisted-queries](https://github.com/apollographql/apollo-link-persisted-queries). But I have no plan to maintain.
+The main purpose of this repo is for supporting [apollo-link-persisted-queries](https://github.com/apollographql/apollo-link-persisted-queries) when prefer to use **white-list** query on server-side.
+
+Disclaimer: I have no plan to maintain this. but may open a pull-request to the origin.
 
 ## How to make persisted hash with apollo-link-persisted-queries
 
@@ -17,7 +19,7 @@ export const gql = (literals: TemplateStringsArray, ...placeholders: any[]) => {
 }
 ```
 
-2). Past custom `generateHash` to `createPersistedQueryLink`
+2). Pass this custom `generateHash` to `createPersistedQueryLink`
 
 ```ts
 createPersistedQueryLink({
@@ -29,7 +31,7 @@ createPersistedQueryLink({
 
 3). Enjoy
 
-✨ Wow, the persisted hash will be calculated on compile time, it make faster. But it only support the project that using whole static query.
+✨ Wow, the persisted hash will be calculated on parse time, it make faster. But it only support the project that using whole static query.
 
 # Apollo CLI
 
