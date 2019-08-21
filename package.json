@@ -21,10 +21,7 @@
     "apollo": "./bin/run"
   },
   "scripts": {
-    "prepack": "oclif-dev manifest && oclif-dev readme",
-    "build": "tsc --build tsconfig.json",
-    "postpack": "rm -f oclif.manifest.json",
-    "version": "oclif-dev readme && git add README.md"
+    "build": "tsc --build tsconfig.json"
   },
   "engines": {
     "node": ">=8",
