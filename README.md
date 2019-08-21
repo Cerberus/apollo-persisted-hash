@@ -2,6 +2,33 @@
 
 The main purpose of this repo is for supporting [apollo-link-persisted-queries](https://github.com/apollographql/apollo-link-persisted-queries). But I have no plan to maintain.
 
+## How to make persisted hash with apollo-link-persisted-queries
+
+1). Use custom `gql` from `graphql-tag`
+
+```ts
+export const gql = (literals: TemplateStringsArray, ...placeholders: any[]) => {
+	const document = graphqlTag(literals, ...placeholders)
+	const sortedDefinitionsDocument = sortDefinitions(document)
+	document.hash = defaultGenerateHash(sortedDefinitionsDocument)
+	return document
+}
+```
+
+2). Past custom `generateHash` to `createPersistedQueryLink`
+
+```ts
+createPersistedQueryLink({
+	generateHash: (document: any) => {
+		return document.hash
+	},
+})
+```
+
+3). Enjoy
+
+✨ Wow, the persisted hash will be calculated on compile time, it make faster. But it only support the project that using whole static query.
+
 # Apollo CLI
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?maxAge=2592000)](https://raw.githubusercontent.com/apollographql/apollo-tooling/master/LICENSE) [![npm](https://img.shields.io/npm/v/apollo.svg)](https://www.npmjs.com/package/apollo) [![Get on Slack](https://img.shields.io/badge/spectrum-join-orange.svg)](https://spectrum.chat/apollo?tab=posts)
